@@ -19,11 +19,6 @@ st.markdown("""
             color: #555;
             margin-bottom: 40px;
         }
-        .dataframe-style {
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            padding: 10px;
-        }
         .css-1aumxhk {
             background-color: #f9f9f9;
         }
@@ -52,9 +47,16 @@ for i in range(1, 16):
 # Convert to DataFrame
 df = pd.DataFrame(students)
 
-# Display DataFrame
+# Display DataFrame with custom styles (white text, black background)
 st.subheader("📋 Generated Student Data")
-st.dataframe(df.style.set_properties(**{'background-color': '#F7F9FB', 'border-color': 'black'}))
+st.dataframe(df.style.set_properties(
+    **{
+        'color': 'white',
+        'background-color': 'black',
+        'border-color': 'white',
+        'text-align': 'center'
+    }
+))
 
 # CSV download
 csv = df.to_csv(index=False).encode('utf-8')
